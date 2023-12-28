@@ -19,7 +19,7 @@ const ChatInterface = () => {
 
   const handleClearMemory = async () => {
     try {
-      await axios.post('https://llm-chat-backend.onrender.com/clear-memory');
+      await axios.get('https://llm-chat-backend.onrender.com/clear-memory');
       setResponse('Memory cleared successfully.');
     } catch (error) {
       console.error('Error clearing memory:', error);
