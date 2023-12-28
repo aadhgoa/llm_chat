@@ -8,12 +8,30 @@ from langchain.prompts import PromptTemplate
 from dotenv import load_dotenv
 import os
 from langchain.llms import AI21
+from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
 
 AI21_API_KEY = os.getenv("AI21_API_KEY")
 
 app = FastAPI()
+
+origins = [
+    "http://localhost.tiangolo.com",
+    "https://localhost.tiangolo.com",
+    "http://localhost",
+    "http://localhost:8000",
+    "http://localhost:3000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 
 
